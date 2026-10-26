@@ -24,6 +24,11 @@ jobs:
           accept-license: true
           packages: 'platform-tools platforms;android-33 build-tools;33.0.2'
 
+      - name: Generate Gradle Wrapper
+        run: |
+          sudo apt-get update && sudo apt-get install -y gradle
+          gradle wrapper
+
       - name: Create local.properties
         run: echo "sdk.dir=${ANDROID_HOME}" > local.properties
 
