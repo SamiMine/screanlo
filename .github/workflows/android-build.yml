@@ -22,7 +22,7 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           accept-license: true
-          packages: 'platform-tools platforms;33 build-tools;33.0.2'
+          packages: 'platform-tools platforms;android-33 build-tools;33.0.2'
 
       - name: Create local.properties
         run: echo "sdk.dir=${ANDROID_HOME}" > local.properties
