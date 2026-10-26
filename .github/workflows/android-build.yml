@@ -21,13 +21,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
-          accept-license: true
+          accept-android-sdk-licenses: true
           packages: 'platform-tools platforms;android-33 build-tools;33.0.2'
 
       - name: Generate Gradle Wrapper
         run: |
           sudo apt-get update && sudo apt-get install -y gradle
-          gradle wrapper --gradle-version 8.5
+          gradle wrapper --gradle-version 8.9
 
       - name: Create local.properties
         run: echo "sdk.dir=${ANDROID_HOME}" > local.properties
@@ -36,7 +36,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --info --stacktrace
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
